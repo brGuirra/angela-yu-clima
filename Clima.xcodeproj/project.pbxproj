@@ -58,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				ADAA27CD231BC87F00365194 /* README.md */,
+				3DC248DB27CBCB0600CB0940 /* OpenWeather-Info.plist */,
 				ADAA27AF231BBFAF00365194 /* Clima */,
 				ADAA27AE231BBFAF00365194 /* Products */,
 			);
@@ -82,7 +83,6 @@
 				ADAA27B9231BBFB300365194 /* Assets.xcassets */,
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
 				ADAA27BE231BBFB300365194 /* Info.plist */,
-				3DC248DB27CBCB0600CB0940 /* OpenWeather-Info.plist */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
