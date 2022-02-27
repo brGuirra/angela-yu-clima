@@ -8,7 +8,13 @@
 
 import Foundation
 
+protocol WeatherManagerDelegate {
+    func didUpdateWeather(weather: WeatherModel)
+}
+
 struct WeatherManager {
+    var delegate: WeatherManagerDelegate?
+
     private var apiKey: String {
         get {
             guard let filePath = Bundle.main.path(forResource: "OpenWeather-Info", ofType: "plist") else {
@@ -28,7 +34,7 @@ struct WeatherManager {
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather"
     
     func fetchWeather(cityName: String) {
-        let urlString = "\(weatherURL)?q=\(cityName)&appid=\(apiKey)"
+        let urlString = "\(weatherURL)?q=\(cityName)&units=metric&appid=\(apiKey)"
         
         performRequest(urlString: urlString)
     }
@@ -43,7 +49,9 @@ struct WeatherManager {
                 }
                 
                 if let data = data {
-                    self.parseJSON(data: data)
+                    if let weather = self.parseJSON(data: data) {
+                        delegate?.didUpdateWeather(weather: weather)
+                    }
                 }
             }
             
@@ -51,38 +59,21 @@ struct WeatherManager {
         }
     }
     
-    func parseJSON(data: Data) {
+    func parseJSON(data: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: data)
             let id = decodedData.weather[0].id
+            let temp = decodedData.main.temp
+            let name = decodedData.name
             
-            print(getConditionName(conditionId: id))
+            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            
+            return weather
         } catch {
             print(error)
+            return nil
         }
-    }
-    
-    func getConditionName(conditionId: Int) -> String {
-        switch conditionId {
-            case 200...232:
-                return "cloud.bolt"
-            case 300...321:
-                return "cloud.drizzle"
-            case 500...531:
-                return "cloud.rain"
-            case 600...622:
-                return "cloud.snow"
-            case 701...781:
-                return "cloud.fog"
-            case 800:
-                return "sun.max"
-            case 801...804:
-                return "cloud.bolt"
-            default:
-                return "cloud"
-        }
-
     }
 }
