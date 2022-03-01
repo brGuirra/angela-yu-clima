@@ -1,54 +1,49 @@
+<h1>Clima</h1>
 
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
+This project is from Angela Yu's course on Udemy called [The Complete iOS App Development Bootcamp](https://www.udemy.com/course/ios-13-app-development-bootcamp/).
 
-#  Clima
+---
 
-## Our Goal
+## 💁🏽‍♂️ Overview
 
-It’s time to take our app development skills to the next level. We’re going to introduce you to the wonderful world of Application Programming Interfaces (APIs) to grab live data from the internet. If you’re dreaming of making that Twitter-powered stock trading app then you’re about add some serious tools to your toolbelt!
+It's a weather app
 
+## ⚙️ How it works
 
-## What you will create
+The app fetches the current weather from [Open Weather API](https://openweathermap.org/api) based on the user location.
 
-By the end of the module, you will have made a beautiful, dark-mode enabled weather app. You'll be able to check the weather for the current location based on the GPS data from the iPhone as well as by searching for a city manually. 
+It's possible to search for the weather in a specific city too.
 
-## What you will learn
+The app supports dark and light mode and based on the selected
+mode shows a different background image.
+
+## 📹 Video
+
+![](https://media.giphy.com/media/DbWlV8iTD1SkWWfoaZ/giphy.gif)
+
+## 🔨 Built with
+
+* UIKit
+* Storyboard
+* MVC
+
+## 🤓 What I learned
 
 * How to create a dark-mode enabled app.
 * How to use vector images as image assets.
-* Learn to use the UITextField to get user input. 
-* Learn about the delegate pattern.
+* How to use the UITextField to get user input. 
+* About the delegate pattern.
 * Swift protocols and extensions. 
 * Swift guard keyword. 
 * Swift computed properties.
 * Swift closures and completion handlers.
-* Learn to use URLSession to network and make HTTP requests.
+* How to use URLSession to network and make HTTP requests.
 * Parse JSON with the native Encodable and Decodable protocols. 
-* Learn to use Grand Central Dispatch to fetch the main thread.
-* Learn to use Core Location to get the current location from the phone GPS. 
+* How to use Grand Central Dispatch to fetch the main thread.
+* How to use Core Location to get the current location from the phone GPS.
+* How to secure API keys with .plist files and how to read the keys from them.
 
-### Condition Codes
-```
-switch conditionID {
-        case 200...232:
-            return "cloud.bolt"
-        case 300...321:
-            return "cloud.drizzle"
-        case 500...531:
-            return "cloud.rain"
-        case 600...622:
-            return "cloud.snow"
-        case 701...781:
-            return "cloud.fog"
-        case 800:
-            return "sun.max"
-        case 801...804:
-            return "cloud.bolt"
-        default:
-            return "cloud"
-        }
-```
+## ⌨ How to use it
 
->This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
-
-![End Banner](Documentation/readme-end-banner.png)
+Download this repository, open it in Xcode, select and iPhone
+simulator and press command + R to run the app.
